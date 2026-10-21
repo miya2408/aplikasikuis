@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="id">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<meta name="theme-color" content="#176b55">  
+<title>Kuis Cerdas Islami</title>  
+<style>  
+:root{--green:#176b55;--green2:#23866b;--mint:#e8f7ef;--cream:#fffaf0;--gold:#f3c969;--ink:#20352e;--muted:#6b7e75;--white:#fff;--red:#c94c4c;--shadow:0 12px 30px #174b3514}  
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:linear-gradient(180deg,#effaf3,#fffaf0);color:var(--ink);min-height:100vh}  
+button,select{font:inherit}button{cursor:pointer;border:0;transition:transform .15s,filter .15s}button:active{transform:scale(.98)}button:focus-visible,select:focus-visible{outline:3px solid #f3c969;outline-offset:3px}  
+header{background:var(--green);color:white;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 4px 18px #164b3520}  
+.brand{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:.2px}.brand-icon{background:#ffffff20;border:1px solid #ffffff30;border-radius:14px;padding:8px;font-size:25px}.header-actions{display:flex;gap:8px}.small-btn{background:#ffffff20;color:white;border:1px solid #ffffff45;border-radius:12px;padding:8px 10px}  
+main{max-width:980px;margin:0 auto;padding:22px 16px 42px}.screen{display:none;animation:fade .25s ease}.screen.active{display:block}@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}  
+.hero{background:linear-gradient(135deg,#176b55,#2b9270);color:white;border-radius:28px;padding:28px 24px;display:grid;grid-template-columns:1.3fr .7fr;gap:12px;align-items:center;box-shadow:var(--shadow);overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:220px;height:220px;border:1px solid #ffffff25;border-radius:50%;right:-65px;top:-80px}.eyebrow{font-size:.78rem;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#d6f3df}.hero h1{font-size:clamp(2rem,6vw,3.25rem);line-height:1.05;margin:10px 0}.hero p{color:#e4f5eb;max-width:500px;line-height:1.6}.hero-art{text-align:center;font-size:clamp(5rem,14vw,8rem);filter:drop-shadow(0 8px 3px #103d2d30);z-index:1}  
+.btn{padding:12px 17px;border-radius:14px;font-weight:800;display:inline-flex;justify-content:center;align-items:center;gap:8px}.btn-primary{background:var(--gold);color:#3b351f}.btn-green{background:var(--green);color:white}.btn-light{background:white;border:1px solid #d9e8df;color:var(--green)}.btn:disabled{opacity:.45;cursor:not-allowed}.section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:25px 0 12px}.section-title h2{margin:0;font-size:1.25rem}.muted{color:var(--muted);font-size:.92rem}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.stat,.panel,.category,.question-card,.result-card{background:white;border:1px solid #e3eee6;border-radius:20px;padding:17px;box-shadow:var(--shadow)}.stat strong{display:block;font-size:1.4rem;color:var(--green)}.stat span{font-size:.85rem;color:var(--muted)}.class-row{display:flex;flex-wrap:wrap;gap:8px}.class-chip{border:1px solid #d7e8dd;background:white;color:var(--green);border-radius:12px;padding:9px 13px;font-weight:750}.class-chip.selected{background:var(--green);color:white;border-color:var(--green)}  
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.category{text-align:left;color:var(--ink);position:relative;overflow:hidden;min-height:145px}.category .emoji{font-size:2rem;display:block;margin-bottom:8px}.category strong{display:block;margin-bottom:4px}.category small{color:var(--muted);line-height:1.4}.category:hover{border-color:#8dc7a5;transform:translateY(-2px)}.category:after{content:"";position:absolute;width:70px;height:70px;border-radius:50%;background:var(--mint);right:-25px;top:-22px;z-index:0}.category>*{position:relative;z-index:1}  
+.panel{margin-top:16px}.panel h3{margin:0 0 10px}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px;margin-top:12px}.field label{font-weight:750;font-size:.9rem}.field select{width:100%;padding:11px;border:1px solid #d6e5dc;border-radius:12px;background:#fff;color:var(--ink)}  
+.quiz-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px}.pill{border-radius:999px;background:var(--mint);color:var(--green);padding:7px 11px;font-size:.83rem;font-weight:800}.progress{height:9px;border-radius:20px;background:#dcebe1;overflow:hidden;margin:10px 0 18px}.progress-bar{height:100%;width:0;background:linear-gradient(90deg,#23866b,#f3c969);transition:width .25s}.question-card{padding:clamp(18px,4vw,28px)}.question-card h2{font-size:clamp(1.15rem,3vw,1.55rem);line-height:1.45;margin:12px 0 20px}.question-number{color:var(--muted);font-weight:750;font-size:.88rem}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.answer{padding:14px;text-align:left;border:1.5px solid #dfeae3;border-radius:14px;background:#fff;color:var(--ink);font-weight:650;display:flex;gap:10px;align-items:center;min-height:58px}.answer .letter{flex:0 0 30px;width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:#edf7f0;color:var(--green);font-weight:900}.answer:hover:not(:disabled){border-color:#65aa85;background:#f8fcf9}.answer.correct{border-color:#259667;background:#e6f7ed}.answer.correct .letter{background:#259667;color:white}.answer.wrong{border-color:#d66b6b;background:#fff0ef}.answer.wrong .letter{background:#d66b6b;color:white}.feedback{display:none;margin-top:15px;padding:14px;border-radius:14px;line-height:1.55}.feedback.show{display:block}.feedback.good{background:#e6f7ed;color:#176b45}.feedback.bad{background:#fff0ef;color:#963e3e}.quiz-actions{display:flex;justify-content:space-between;gap:10px;margin-top:17px}.quiz-actions button{flex:1}  
+.result-card{text-align:center;padding:28px}.result-emoji{font-size:4rem}.result-card h2{font-size:2rem;margin:8px 0}.score{font-size:3.2rem;color:var(--green);font-weight:900;line-height:1.2}.badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.badge-item{border:1px solid #e2ede5;border-radius:15px;padding:13px 7px;background:#fff}.badge-item .emoji{font-size:2rem}.badge-item strong{display:block;font-size:.88rem}.badge-item small{font-size:.75rem;color:var(--muted)}.badge-item.locked{filter:grayscale(1);opacity:.48}.review-list{display:grid;gap:9px;text-align:left;margin-top:20px}.review-item{padding:13px;border-radius:13px;background:#f7faf7;border:1px solid #e3eee6}.review-item strong{display:block;margin-bottom:4px}.review-item small{color:var(--muted);line-height:1.5}  
+footer{text-align:center;padding:10px 18px 26px;color:var(--muted);font-size:.82rem}  
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:#20352e;color:#fff;border-radius:12px;padding:11px 16px;box-shadow:var(--shadow);display:none;z-index:5}.toast.show{display:block}  
+@media(max-width:650px){main{padding:16px 12px 30px}.hero{grid-template-columns:1fr;padding:24px 19px}.hero-art{display:none}.categories{grid-template-columns:1fr 1fr}.category{min-height:130px;padding:14px}.stats{gap:8px}.stat{padding:12px}.stat strong{font-size:1.2rem}.answers{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}.badge-grid{grid-template-columns:repeat(3,1fr)}header{padding:11px 12px}.brand{font-size:.9rem}.brand-icon{font-size:20px}.small-btn{padding:7px 8px;font-size:.8rem}}  
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}  
+</style>  
+</head>  
+<body>  
+<header>  
+  <div class="brand"><span class="brand-icon">🕌</span><span>Kuis Cerdas Islami</span></div>  
+  <div class="header-actions">  
+    <button class="small-btn" id="soundBtn" aria-label="Aktifkan atau matikan suara">🔊 Suara</button>  
+    <button class="small-btn" id="homeBtn">⌂ Beranda</button>  
+  </div>  
+</header>  
+<main>  
+  <section class="screen active" id="homeScreen">  
+    <div class="hero">  
+      <div>  
+        <div class="eyebrow">Belajar • Bermain • Berakhlak</div>  
+        <h1>Yuk, Jadi Anak Muslim Cerdas! 🌟</h1>  
+        <p>Uji pengetahuan agama Islam, kumpulkan bintang, dan buka lencana keren sambil belajar.</p>  
+        <button class="btn btn-primary" id="startBtn">Mulai Kuis <span>➜</span></button>  
+      </div>  
+      <div class="hero-art" aria-hidden="true">🌙</div>  
+    </div>  
+    <div class="stats">  
+      <div class="stat"><strong id="bestScore">0</strong><span>Skor terbaik</span></div>  
+      <div class="stat"><strong id="playedCount">0</strong><span>Kuis selesai</span></div>  
+      <div class="stat"><strong id="badgeCount">0/6</strong><span>Lencana terbuka</span></div>  
+    </div>  
+    <div class="section-title"><h2>🎯 Pilih materi</h2><span class="muted">Pilih yang kamu suka!</span></div>  
+    <div class="categories" id="categoryGrid"></div>  
+    <div class="panel">  
+      <h3>🎒 Siapkan petualanganmu</h3>  
+      <div class="two-col">  
+        <div class="field"><label for="classSelect">Kelas</label><select id="classSelect"><option value="1">Kelas 1 SD/MI</option><option value="2">Kelas 2 SD/MI</option><option value="3" selected>Kelas 3 SD/MI</option><option value="4">Kelas 4 SD/MI</option><option value="5">Kelas 5 SD/MI</option><option value="6">Kelas 6 SD/MI</option></select></div>  
+        <div class="field"><label for="countSelect">Jumlah soal</label><select id="countSelect"><option value="5">5 soal (cepat)</option><option value="10" selected>10 soal (normal)</option><option value="15">15 soal (tantangan)</option></select></div>  
+      </div>  
+      <p class="muted">Tips: baca soal dengan teliti. Setiap jawaban akan disertai penjelasan agar kamu bisa belajar dari hasilnya.</p>  
+    </div>  
+  </section>    <section class="screen" id="quizScreen">  
+    <div class="quiz-top"><button class="btn btn-light" id="quitBtn">← Keluar</button><span class="pill" id="categoryPill">📚 Materi</span><span class="pill" id="scorePill">⭐ 0 poin</span></div>  
+    <div class="progress"><div class="progress-bar" id="progressBar"></div></div>  
+    <div class="question-card">  
+      <div class="question-number" id="questionNumber">SOAL 1 DARI 10</div>  
+      <h2 id="questionText">Pertanyaan akan tampil di sini.</h2>  
+      <div class="answers" id="answers"></div>  
+      <div class="feedback" id="feedback" aria-live="polite"></div>  
+      <div class="quiz-actions"><button class="btn btn-light" id="hintBtn">💡 Petunjuk</button><button class="btn btn-green" id="nextBtn" disabled>Soal berikutnya ➜</button></div>  
+      <div class="muted" id="hintText" hidden style="margin-top:12px"></div>  
+    </div>  
+  </section>    <section class="screen" id="resultScreen">  
+    <div class="result-card">  
+      <div class="result-emoji" id="resultEmoji">🏆</div>  
+      <div class="eyebrow" style="color:var(--green)">KUIS SELESAI</div>  
+      <h2 id="resultTitle">Hebat sekali!</h2>  
+      <div class="score" id="finalScore">0</div>  
+      <p id="resultMessage">Kamu sudah menyelesaikan kuis.</p>  
+      <div class="stats">  
+        <div class="stat"><strong id="correctCount">0/10</strong><span>Jawaban benar</span></div>  
+        <div class="stat"><strong id="accuracy">0%</strong><span>Ketepatan</span></div>  
+        <div class="stat"><strong id="earnedPoints">0</strong><span>Poin didapat</span></div>  
+      </div>  
+      <div class="section-title"><h2>🏅 Lencana belajar</h2></div>  
+      <div class="badge-grid" id="badgeGrid"></div>  
+      <div class="quiz-actions" style="margin-top:22px"><button class="btn btn-light" id="homeAgainBtn">⌂ Beranda</button><button class="btn btn-green" id="retryBtn">🔄 Main lagi</button></div>  
+    </div>  
+    <div class="panel"><h3>📖 Yuk, pelajari jawabanmu</h3><div class="review-list" id="reviewList"></div></div>  
+  </section>  
+</main>  
+<footer>🌿 Kuis Cerdas Islami • Belajar agama dengan gembira</footer>  
+<div class="toast" id="toast" role="status"></div>  
+<script>  
+const categories = [  
+ {id:"iman",name:"Akidah & Rukun Iman",emoji:"🌟",desc:"Belajar iman, malaikat, dan sifat terpuji."},  
+ {id:"ibadah",name:"Ibadah Sehari-hari",emoji:"🤲",desc:"Wudu, salat, puasa, dan kebersihan."},  
+ {id:"quran",name:"Al-Qur'an",emoji:"📖",desc:"Kitab suci, surah, dan adab membaca."},  
+ {id:"akhlak",name:"Akhlak Mulia",emoji:"💚",desc:"Adab kepada orang tua, guru, dan teman."},  
+ {id:"nabi",name:"Kisah Nabi",emoji:"🌙",desc:"Mengenal nabi dan pelajaran dari kisahnya."},  
+ {id:"campuran",name:"Kuis Campuran",emoji:"🎯",desc:"Campur semua materi, berani mencoba?"}  
+];  
+// Bank soal tingkat dasar SD/MI. Tinjau dan sesuaikan dengan materi kelas yang diajarkan.  
+const bank = [  
+{id:"iman1",cat:"iman",min:1,q:"Berapa jumlah rukun iman yang harus diketahui umat Islam?",a:["Empat","Lima","Enam","Tujuh"],correct:2,why:"Rukun iman berjumlah enam: iman kepada Allah, malaikat, kitab, rasul, hari akhir, serta qada dan qadar.",hint:"Jumlahnya lebih banyak daripada rukun Islam."},  
+{id:"iman2",cat:"iman",min:1,q:"Siapakah malaikat yang bertugas menyampaikan wahyu kepada nabi dan rasul?",a:["Mikail","Jibril","Israfil","Malik"],correct:1,why:"Malaikat Jibril bertugas menyampaikan wahyu Allah kepada para nabi dan rasul.",hint:"Malaikat ini menyampaikan wahyu Al-Qur'an kepada Nabi Muhammad."},  
+{id:"iman3",cat:"iman",min:2,q:"Kitab suci yang diturunkan kepada Nabi Muhammad adalah ...",a:["Taurat","Zabur","Injil","Al-Qur'an"],correct:3,why:"Al-Qur'an adalah kitab suci yang diturunkan Allah kepada Nabi Muhammad melalui Malaikat Jibril.",hint:"Kitab suci umat Islam."},  
+{id:"iman4",cat:"iman",min:2,q:"Malaikat yang bertugas meniup sangkakala atas perintah Allah adalah ...",a:["Israfil","Mikail","Jibril","Ridwan"],correct:0,why:"Malaikat Israfil dikenal bertugas meniup sangkakala atas perintah Allah.",hint:"Namanya sering dikaitkan dengan sangkakala."},  
+{id:"iman5",cat:"iman",min:3,q:"Hari ketika manusia dibangkitkan untuk mempertanggungjawabkan amal disebut ...",a:["Hari libur","Hari akhir","Hari pasar","Hari ulang tahun"],correct:1,why:"Hari akhir adalah bagian dari rukun iman; manusia akan dibangkitkan dan mempertanggungjawabkan amalnya.",hint:"Hari ini termasuk salah satu rukun iman."},  
+{id:"iman6",cat:"iman",min:3,q:"Beriman kepada qada dan qadar berarti meyakini ...",a:["Semua kejadian tanpa perlu berusaha","Ketetapan Allah dan tetap berikhtiar","Hanya kejadian yang menyenangkan","Manusia mengetahui seluruh masa depan"],correct:1,why:"Umat Islam meyakini ketetapan Allah dan tetap wajib berusaha serta berdoa.",hint:"Iman ini berjalan bersama usaha dan doa."},  
+{id:"ibadah1",cat:"ibadah",min:1,q:"Sebelum salat, umat Islam harus bersuci jika berhadas kecil dengan cara ...",a:["Tidur","Wudu","Makan","Berlari"],correct:1,why:"Wudu merupakan cara bersuci dari hadas kecil sebelum salat.",hint:"Gunakan air suci dan menyucikan."},  
+{id:"ibadah2",cat:"ibadah",min:1,q:"Dalam sehari semalam, salat fardu berjumlah ...",a:["Tiga waktu","Empat waktu","Lima waktu","Enam waktu"],correct:2,why:"Salat fardu sehari semalam ada lima waktu: Subuh, Zuhur, Asar, Magrib, dan Isya.",hint:"Subuh sampai Isya."},  
+{id:"ibadah3",cat:"ibadah",min:2,q:"Puasa wajib bagi umat Islam dilaksanakan pada bulan ...",a:["Muharam","Ramadan","Safar","Syawal saja"],correct:1,why:"Puasa wajib dilaksanakan pada bulan Ramadan.",hint:"Bulan yang dikenal sebagai bulan puasa."},  
+{id:"ibadah4",cat:"ibadah",min:2,q:"Arah yang dituju umat Islam ketika salat disebut ...",a:["Kutub","Kiblat","Mihrab saja","Mimbar"],correct:1,why:"Kiblat umat Islam adalah arah Ka'bah di Masjidil Haram, Makkah.",hint:"Arah menuju Ka'bah."},  
+{id:"ibadah5",cat:"ibadah",min:3,q:"Salah satu hal yang membatalkan wudu adalah ...",a:["Membaca buku","Keluar angin dari dubur","Memakai pakaian bersih","Mendengarkan nasihat"],correct:1,why:"Keluar angin dari dubur termasuk hal yang membatalkan wudu.",hint:"Salah satu hadas kecil yang umum dipelajari."},  
+{id:"ibadah6",cat:"ibadah",min:3,q:"Zakat fitrah biasanya ditunaikan pada bulan ...",a:["Ramadan menjelang Idulfitri","Safar saja","Rajab saja","Muharam saja"],correct:0,why:"Zakat fitrah ditunaikan pada bulan Ramadan sebelum salat Idulfitri menurut ketentuan waktunya.",hint:"Dibayarkan menjelang hari raya setelah Ramadan."},  
+{id:"quran1",cat:"quran",min:1,q:"Apa nama kitab suci umat Islam?",a:["Al-Qur'an","Tripitaka","Weda","Taurat sebagai kitab umat Islam"],correct:0,why:"Al-Qur'an adalah kitab suci umat Islam.",hint:"Kitab yang dibaca dan dipelajari umat Islam."},  
+{id:"quran2",cat:"quran",min:1,q:"Surah yang dibaca pada setiap rakaat salat adalah ...",a:["Al-Falaq saja","Al-Fatihah","Al-Lahab saja","An-Nas saja"],correct:1,why:"Surah Al-Fatihah dibaca dalam setiap rakaat salat.",hint:"Surah pembuka dalam mushaf Al-Qur'an."},  
+{id:"quran3",cat:"quran",min:2,q:"Sebelum membaca Al-Qur'an, sikap yang baik adalah ...",a:["Bercanda keras","Menjaga adab dan kebersihan","Meletakkannya sembarangan","Mengganggu teman"],correct:1,why:"Al-Qur'an perlu dibaca dengan hormat, menjaga kebersihan, dan memperhatikan adab membaca.",hint:"Pikirkan sikap hormat terhadap kitab suci."},  
+{id:"quran4",cat:"quran",min:2,q:"Surah Al-Ikhlas menjelaskan tentang ...",a:["Kisah perdagangan","Keesaan Allah","Aturan olahraga","Perjalanan ke sekolah"],correct:1,why:"Surah Al-Ikhlas menegaskan bahwa Allah Maha Esa.",hint:"Perhatikan makna 'ikhlas' dalam surah ini dan ayat-ayatnya."},  
+{id:"quran5",cat:"quran",min:3,q:"Wahyu pertama yang diterima Nabi Muhammad terdapat pada surah ...",a:["Al-'Alaq","Al-Kautsar","Al-Fil","Al-Ma'un"],correct:0,why:"Wahyu pertama adalah ayat 1–5 dari Surah Al-'Alaq.",hint:"Surah ini dimulai dengan perintah membaca."},  
+{id:"akhlak1",cat:"akhlak",min:1,q:"Ketika orang tua memberi nasihat yang baik, kita seharusnya ...",a:["Membentak","Mendengarkan dengan sopan","Pergi sambil mengejek","Berpura-pura tidak mendengar"],correct:1,why:"Menghormati dan mendengarkan nasihat yang baik dari orang tua merupakan akhlak mulia.",hint:"Pilih sikap yang menunjukkan hormat."},  
+{id:"akhlak2",cat:"akhlak",min:1,q:"Jika teman terjatuh, sikap yang baik adalah ...",a:["Menertawakannya","Membiarkannya","Membantu dan memastikan ia baik-baik saja","Menyalahkannya"],correct:2,why:"Menolong teman adalah contoh sikap peduli dan saling menyayangi.",hint:"Bayangkan tindakan yang kamu harapkan saat membutuhkan bantuan."},  
+{id:"akhlak3",cat:"akhlak",min:2,q:"Jika melakukan kesalahan kepada teman, kita sebaiknya ...",a:["Menyalahkan orang lain","Meminta maaf dan memperbaiki kesalahan","Menyembunyikannya selamanya","Mengejek teman"],correct:1,why:"Berani meminta maaf dan memperbaiki kesalahan adalah perilaku bertanggung jawab.",hint:"Akui kesalahan dan lakukan hal yang baik setelahnya."},  
+{id:"akhlak4",cat:"akhlak",min:2,q:"Saat meminjam barang milik teman, kita harus ...",a:["Mengembalikannya dengan baik","Mengaku barang itu milik kita","Merusaknya","Meminjam tanpa izin"],correct:0,why:"Kita harus meminta izin, menjaga barang pinjaman, dan mengembalikannya.",hint:"Pikirkan cara menjaga kepercayaan teman."},  
+{id:"akhlak5",cat:"akhlak",min:3,q:"Contoh perilaku jujur di sekolah adalah ...",a:["Menyontek saat ujian","Mengakui kesalahan sendiri","Mengambil uang teman","Berbohong kepada guru"],correct:1,why:"Mengakui kesalahan sendiri merupakan contoh kejujuran.",hint:"Jujur berarti berkata dan bertindak sesuai kenyataan."},  
+{id:"nabi1",cat:"nabi",min:1,q:"Siapakah nabi terakhir dalam Islam?",a:["Nabi Musa","Nabi Isa","Nabi Muhammad","Nabi Ibrahim"],correct:2,why:"Nabi Muhammad adalah nabi dan rasul terakhir dalam Islam.",hint:"Beliau menerima wahyu Al-Qur'an."},  
+{id:"nabi2",cat:"nabi",min:1,q:"Nabi yang membuat kapal besar atas perintah Allah adalah ...",a:["Nabi Nuh","Nabi Yusuf","Nabi Yunus","Nabi Sulaiman"],correct:0,why:"Nabi Nuh membuat kapal atas perintah Allah untuk menghadapi banjir besar.",hint:"Kisahnya berkaitan dengan banjir besar."},  
+{id:"nabi3",cat:"nabi",min:2,q:"Nabi yang dikenal sangat sabar ketika mendapat ujian berupa penyakit adalah ...",a:["Nabi Ayyub","Nabi Harun","Nabi Idris","Nabi Ilyas"],correct:0,why:"Nabi Ayyub dikenal sebagai teladan kesabaran ketika menghadapi ujian berat.",hint:"Kisah beliau sering dijadikan contoh kesabaran."},  
+{id:"nabi4",cat:"nabi",min:2,q:"Nabi Ibrahim bersama Nabi Ismail membangun kembali ...",a:["Ka'bah","Istana Romawi","Menara sekolah","Pasar Madinah"],correct:0,why:"Nabi Ibrahim dan Nabi Ismail membangun Ka'bah atas perintah Allah.",hint:"Bangunan suci yang menjadi arah kiblat."},  
+{id:"nabi5",cat:"nabi",min:3,q:"Nabi yang diberi mukjizat dapat memahami bahasa hewan dengan izin Allah adalah ...",a:["Nabi Sulaiman","Nabi Zakaria","Nabi Hud","Nabi Saleh"],correct:0,why:"Allah memberi Nabi Sulaiman kemampuan memahami bahasa hewan sebagai salah satu karunia-Nya.",hint:"Kisah beliau berkaitan dengan semut dan burung."}  
+];  
+const badgeDefs=[  
+ {id:"first",emoji:"🌱",name:"Langkah Pertama",desc:"Selesaikan kuis pertama",test:s=>s.played>=1},  
+ {id:"sharp",emoji:"🧠",name:"Pikiran Cerdas",desc:"Jawaban benar minimal 60%",test:s=>s.lastAccuracy>=60},  
+ {id:"star",emoji:"⭐",name:"Bintang Islami",desc:"Jawaban benar minimal 80%",test:s=>s.lastAccuracy>=80},  
+ {id:"perfect",emoji:"💎",name:"Nilai Sempurna",desc:"Jawab semua soal dengan benar",test:s=>s.lastAccuracy===100&&s.lastTotal>0},  
+ {id:"reader",emoji:"📖",name:"Sahabat Al-Qur'an",desc:"Selesaikan kuis Al-Qur'an",test:s=>s.categories.includes("quran")},  
+ {id:"kind",emoji:"💚",name:"Hati yang Baik",desc:"Selesaikan kuis Akhlak",test:s=>s.categories.includes("akhlak")}  
+];  
+let chosenCat="campuran",questions=[],index=0,score=0,correct=0,answered=false,answerLog=[],soundOn=true,lastConfig={cat:"campuran",cls:3,count:10};  
+const $=id=>document.getElementById(id);  
+function getState(){try{return JSON.parse(localStorage.getItem("kuisIslamiState"))||{best:0,played:0,categories:[],badges:[],lastAccuracy:0,lastTotal:0}}catch(e){return {best:0,played:0,categories:[],badges:[],lastAccuracy:0,lastTotal:0}}}  
+function saveState(s){try{localStorage.setItem("kuisIslamiState",JSON.stringify(s))}catch(e){}}  
+function showScreen(id){document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("active",s.id===id));window.scrollTo({top:0,behavior:"smooth"})}  
+function toast(msg){$("toast").textContent=msg;$("toast").classList.add("show");setTimeout(()=>$("toast").classList.remove("show"),2200)}  
+function beep(freq=660,duration=.1){if(!soundOn)return;try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;const c=new C(),o=c.createOscillator(),g=c.createGain();o.frequency.value=freq;o.type="sine";g.gain.setValueAtTime(.06,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+duration);o.connect(g);g.connect(c.destination);o.start();o.stop(c.currentTime+duration)}catch(e){}}  
+function renderCategories(){$("categoryGrid").innerHTML=categories.map(c=>`<button class="category" data-cat="${c.id}"><span class="emoji">${c.emoji}</span><strong>${c.name}</strong><small>${c.desc}</small></button>`).join("");document.querySelectorAll("[data-cat]").forEach(b=>b.addEventListener("click",()=>startQuiz(b.dataset.cat)))}  
+function updateHome(){const s=getState();$("bestScore").textContent=s.best||0;$("playedCount").textContent=s.played||0;$("badgeCount").textContent=`${(s.badges||[]).length}/6`}  
+function startQuiz(cat){chosenCat=cat;const cls=Number($("classSelect").value),count=Number($("countSelect").value);lastConfig={cat,cls,count};let pool=bank.filter(q=>(cat==="campuran"||q.cat===cat)&&q.min<=cls+1);if(pool.length<count){pool=bank.filter(q=>cat==="campuran"||q.cat===cat)}questions=pool.sort(()=>Math.random()-.5).slice(0,Math.min(count,pool.length));if(!questions.length){toast("Soal belum tersedia.");return}index=0;score=0;correct=0;answered=false;answerLog=[];$("categoryPill").textContent=(categories.find(c=>c.id===cat)?.emoji||"📚")+" "+(categories.find(c=>c.id===cat)?.name||"Kuis");showScreen("quizScreen");renderQuestion();beep(520)}  
+function renderQuestion(){const q=questions[index];answered=false;$("questionNumber").textContent=`SOAL ${index+1} DARI ${questions.length}`;$("questionText").textContent=q.q;$("progressBar").style.width=`${index/questions.length*100}%`;$("scorePill").textContent=`⭐ ${score} poin`;$("feedback").className="feedback";$("feedback").textContent="";$("hintText").hidden=true;$("hintText").textContent="💡 "+q.hint;$("hintBtn").disabled=false;$("nextBtn").disabled=true;$("nextBtn").textContent=index===questions.length-1?"Lihat hasil 🏆":"Soal berikutnya ➜";const letters=["A","B","C","D"];$("answers").innerHTML=q.a.map((a,i)=>`<button class="answer" data-answer="${i}"><span class="letter">${letters[i]}</span><span>${a}</span></button>`).join("");document.querySelectorAll("[data-answer]").forEach(b=>b.addEventListener("click",()=>chooseAnswer(Number(b.dataset.answer))))}  
+function chooseAnswer(choice){if(answered)return;answered=true;const q=questions[index],ok=choice===q.correct;if(ok){correct++;score+=10;beep(780,.15)}else beep(220,.2);answerLog.push({q,choice,ok});document.querySelectorAll("[data-answer]").forEach((b,i)=>{b.disabled=true;if(i===q.correct)b.classList.add("correct");if(i===choice&&!ok)b.classList.add("wrong")});const f=$("feedback");f.className="feedback show "+(ok?"good":"bad");f.innerHTML=`<strong>${ok?"✨ Hebat, jawabanmu benar!":"🌱 Tetap semangat, ya!"}</strong><br>${q.why}`;$("scorePill").textContent=`⭐ ${score} poin`;$("nextBtn").disabled=false;$("progressBar").style.width=`${(index+1)/questions.length*100}%`;$("hintBtn").disabled=true}  
+function showHint(){if($("hintText").hidden){$("hintText").hidden=false;toast("Baca petunjuknya, lalu pilih jawaban!")}else $("hintText").hidden=true}  
+function nextQuestion(){if(!answered)return;if(index<questions.length-1){index++;renderQuestion()}else finishQuiz()}  
+function finishQuiz(){const total=questions.length,accuracy=Math.round(correct/total*100);let s=getState();s.played=(s.played||0)+1;s.best=Math.max(s.best||0,score);s.lastAccuracy=accuracy;s.lastTotal=total;s.categories=[...new Set([...(s.categories||[]),chosenCat])];const unlocked=badgeDefs.filter(b=>b.test(s)).map(b=>b.id);s.badges=[...new Set([...(s.badges||[]),...unlocked])];saveState(s);$("resultEmoji").textContent=accuracy===100?"🏆":accuracy>=70?"🌟":"🌱";$("resultTitle").textContent=accuracy===100?"MasyaAllah, sempurna!":accuracy>=70?"Hebat, terus belajar!":"Jangan menyerah!";$("finalScore").textContent=score+" poin";$("resultMessage").textContent=accuracy>=70?"Kamu sudah berusaha dengan baik. Terus tambah ilmu dan amalkan akhlak mulia!":"Tidak apa-apa jika belum semuanya benar. Baca pembahasan dan coba lagi, ya!";$("correctCount").textContent=`${correct}/${total}`;$("accuracy").textContent=accuracy+"%";$("earnedPoints").textContent=score;$("badgeGrid").innerHTML=badgeDefs.map(b=>{const got=s.badges.includes(b.id);return `<div class="badge-item ${got?"":"locked"}"><div class="emoji">${got?b.emoji:"🔒"}</div><strong>${b.name}</strong><small>${got?"Lencana terbuka":b.desc}</small></div>`}).join("");$("reviewList").innerHTML=answerLog.map((r,i)=>`<div class="review-item"><strong>${i+1}. ${r.q.q}</strong><small>${r.ok?"✅ Jawabanmu benar.":"❌ Jawabanmu: "+r.q.a[r.choice]+". Jawaban benar: "+r.q.a[r.q.correct]+"."}<br>${r.q.why}</small></div>`).join("");updateHome();showScreen("resultScreen");beep(880,.2)}  
+function goHome(){showScreen("homeScreen");updateHome()}  
+$("startBtn").addEventListener("click",()=>startQuiz("campuran"));$("homeBtn").addEventListener("click",goHome);$("homeAgainBtn").addEventListener("click",goHome);$("retryBtn").addEventListener("click",()=>startQuiz(lastConfig.cat));$("nextBtn").addEventListener("click",nextQuestion);$("hintBtn").addEventListener("click",showHint);$("quitBtn").addEventListener("click",()=>{if(confirm("Keluar dari kuis? Progres kuis yang sedang berlangsung tidak akan disimpan."))goHome()});$("soundBtn").addEventListener("click",()=>{soundOn=!soundOn;$("soundBtn").textContent=soundOn?"🔊 Suara":"🔇 Senyap";if(soundOn)beep()});  
+renderCategories();updateHome();  
+</script>  
+</body>  
+</html>'''
